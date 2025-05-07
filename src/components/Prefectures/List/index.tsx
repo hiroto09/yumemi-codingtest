@@ -10,7 +10,6 @@ export default async function PrefList() {
                 <div key={pref.prefCode}>
                     <li>
                         {pref.prefName}
-                        
                     </li>
                 </div>
             ))}
