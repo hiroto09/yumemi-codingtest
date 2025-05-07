@@ -1,10 +1,10 @@
 import Section from "../layout/Section";
-import List from "./List";
+import PrefList from "./List";
 
 export default function Prefecture() {
     return (
         <Section title="都道府県">
-            <List />
+            <PrefList />
         </Section>
     )
 }

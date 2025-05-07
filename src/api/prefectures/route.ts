@@ -1,4 +1,4 @@
-import {PrefectureResponse} from "@/types/prefectures"
+import {PrefectureResponse,Prefectures} from "@/types/prefectures";
 
 export default async function getPrefectures() {
 
@@ -20,7 +20,7 @@ export default async function getPrefectures() {
     }
     
     const responseJson: PrefectureResponse = await response.json();
-    const prefectures = responseJson.result;
+    const prefectures:Prefectures = responseJson.result;
     //console.log("prefectures",prefectures);
 
     return prefectures;
