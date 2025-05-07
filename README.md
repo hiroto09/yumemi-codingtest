@@ -31,8 +31,8 @@ npm test
 │ 
 ├── components
 │   ├── layout
-│   ├── PopulationSection
-│   ├── PrefectureSection
+│   ├── Populations
+│   ├── Prefectures
 │
 ├── const
 │   ├── ChartTemplate
