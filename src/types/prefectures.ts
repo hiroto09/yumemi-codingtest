@@ -5,5 +5,5 @@ export type Prefectures = {
 
 export type PrefectureResponse = {
     message: string;
-    result: Prefectures[];
+    result: Prefectures;
 };

@@ -20,7 +20,6 @@ export default async function getPrefectures() {
 
     const responseJson: PrefectureResponse = await response.json();
     const prefectures: Prefectures = responseJson.result;
-    //console.log("prefectures",prefectures);
 
     return prefectures;
 }
