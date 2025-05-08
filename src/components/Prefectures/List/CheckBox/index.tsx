@@ -1,11 +1,20 @@
+'use client';
+import { useSetAtom, useAtomValue } from 'jotai';
+import { selectPrefList } from '@/store';
 
-// export default function CheckBox() {
+type CheckBoxProps = {
+    prefCode: number;
+    prefName: string;
+};
 
-//     const handleCheckBox = () => {
-//         console.log("Checkbox clicked");
-//     }
+export default function CheckBox({ prefCode, prefName }: CheckBoxProps) {
+    const setselectPrefList = useSetAtom(selectPrefList);
 
-//     return (
-//         <input type="checkbox" onChange={(e)=>handleCheckBox()} />
-//     )
-// }
+    const handleChangeCheckBox = (checked: boolean) => {
+        setselectPrefList((prev = []) =>
+            checked ? [...prev, prefCode] : prev.filter((code) => code !== prefCode)
+        );
+    };
+
+    return <input type="checkbox" onChange={(e) => handleChangeCheckBox(e.target.checked)} />;
+}

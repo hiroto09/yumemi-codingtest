@@ -6,7 +6,7 @@
     grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
     grid-gap: 5px;
     place-items: center;
-    @media screen and (max-width: 500px){
+    @media screen and (max-width: 500px) {
         font-size: 0.8rem;
     }
 }
