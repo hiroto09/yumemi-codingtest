@@ -9,21 +9,19 @@ type CheckBoxProps = {
 };
 
 export default function CheckBox({ prefCode, prefName }: CheckBoxProps) {
-    const setselectPrefList = useSetAtom(selectPrefList);
-    const usePopulationList = useAtomValue(PopulationList);
+    const setSelectPrefList = useSetAtom(selectPrefList);
+    const populationList = useAtomValue(PopulationList);
     const setPopulationList = useSetAtom(PopulationList);
-    const acquiredDataList = usePopulationList.map((data) => data.prefCode);
 
     const handleChangeCheckBox = async (checked: boolean) => {
-        
-        setselectPrefList((prev = []) =>
-            checked ? [...prev, prefCode] : prev.filter((code) => code !== prefCode)
-        );
+        setSelectPrefList((prev) => {
+            const list = prev ?? [];
+            return checked ? [...list, prefCode] : list.filter((code) => code !== prefCode);
+        });
 
-        if (!acquiredDataList.includes(prefCode)) {
+        if (checked && !populationList.some((data) => data.prefCode === prefCode)) {
             const color = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
             const populationData = await getPopulations(prefCode);
-        
             setPopulationList((prev) => [
                 ...prev,
                 {
@@ -36,5 +34,11 @@ export default function CheckBox({ prefCode, prefName }: CheckBoxProps) {
         }
     };
 
-    return <input type="checkbox" onChange={(e) => handleChangeCheckBox(e.target.checked)} />;
+    return (
+        <input
+            type="checkbox"
+            onChange={(e) => handleChangeCheckBox(e.target.checked)}
+            defaultChecked={populationList.some((data) => data.prefCode === prefCode)}
+        />
+    );
 }
