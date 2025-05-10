@@ -3,12 +3,12 @@ import { describe, vi, expect, beforeEach } from 'vitest';
 import { Provider } from 'jotai';
 import CheckBox from '.';
 import * as api from '@/api/populations/route';
-import { selectPrefList, PopulationList } from '@/store';
+import { SelectPrefList, PopulationList } from '@/store';
 import { createStore } from 'jotai';
 
 const createTestStore = () => {
     const store = createStore();
-    store.set(selectPrefList, []);
+    store.set(SelectPrefList, []);
     store.set(PopulationList, []);
     return store;
 };
@@ -45,14 +45,14 @@ describe('CheckBoxコンポーネントのテスト', () => {
             expect(populationData[0].data).toEqual(fakePopulationData);
         });
 
-        const selected = store.get(selectPrefList);
+        const selected = store.get(SelectPrefList);
         expect(selected).toContain(prefCode);
     });
 
     test('チェックボックスをオフにする時の処理', async () => {
         const store = createTestStore();
 
-        store.set(selectPrefList, [prefCode]);
+        store.set(SelectPrefList, [prefCode]);
         store.set(PopulationList, [
             {
                 prefCode,
@@ -72,7 +72,7 @@ describe('CheckBoxコンポーネントのテスト', () => {
         fireEvent.click(checkbox);
 
         await waitFor(() => {
-            const selected = store.get(selectPrefList);
+            const selected = store.get(SelectPrefList);
             expect(selected).not.toContain(prefCode);
         });
     });

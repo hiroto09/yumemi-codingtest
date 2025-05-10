@@ -13,29 +13,30 @@ import styles from './index.module.scss';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend);
 
-export const options = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-        legend: {
-            position: 'top' as const,
-        },
-    },
+type ChartTemplateProps = {
+    label: number[];
+    datasets: {
+        label: string;
+        data: number[];
+        borderColor: string;
+        backgroundColor: string;
+    }[];
 };
 
-export default function ChartTemplate() {
-    const labels = ['January', 'February', 'March', 'April', 'May'];
+export default function ChartTemplate({label, datasets}: ChartTemplateProps) {
 
-    const datasets = [
-        {
-            label: 'Population',
-            data: [0, 10, 5, 2, 20],
-            borderColor: 'rgba(75, 192, 192, 1)',
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+    const options = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'top' as const,
+            },
         },
-    ];
+    };
+
     const data = {
-        labels,
+        label,
         datasets,
     };
     return (

@@ -1,6 +1,6 @@
 'use client';
 import { useSetAtom, useAtomValue } from 'jotai';
-import { selectPrefList, PopulationList } from '@/store';
+import { SelectPrefList, PopulationList } from '@/store';
 import getPopulations from '@/api/populations/route';
 
 type CheckBoxProps = {
@@ -9,7 +9,7 @@ type CheckBoxProps = {
 };
 
 export default function CheckBox({ prefCode, prefName }: CheckBoxProps) {
-    const setSelectPrefList = useSetAtom(selectPrefList);
+    const setSelectPrefList = useSetAtom(SelectPrefList);
     const populationList = useAtomValue(PopulationList);
     const setPopulationList = useSetAtom(PopulationList);
 
