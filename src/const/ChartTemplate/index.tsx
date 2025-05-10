@@ -23,8 +23,7 @@ type ChartTemplateProps = {
     }[];
 };
 
-export default function ChartTemplate({label, datasets}: ChartTemplateProps) {
-
+export default function ChartTemplate({ label, datasets }: ChartTemplateProps) {
     const options = {
         responsive: true,
         maintainAspectRatio: false,

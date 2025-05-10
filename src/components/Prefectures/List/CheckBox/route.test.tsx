@@ -59,6 +59,7 @@ describe('CheckBoxコンポーネントのテスト', () => {
                 prefName,
                 color: '#ff0000',
                 data: fakePopulationData,
+                checked: true,
             },
         ]);
 

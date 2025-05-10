@@ -22,4 +22,5 @@ export type PopulationDataList = {
     prefName: string;
     color: string;
     data: ResultData[];
+    checked: boolean;
 };

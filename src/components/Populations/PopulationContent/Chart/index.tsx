@@ -1,5 +1,5 @@
 import ChartTemplate from '@/const/ChartTemplate';
-import { SelectPrefList, PopulationList } from '@/store';
+import { PopulationList } from '@/store';
 import { useAtomValue } from 'jotai';
 import styles from './index.module.scss';
 
@@ -8,19 +8,16 @@ type Props = {
 };
 
 export default function PopulationContent({ selectedData }: Props) {
-    const selectPrefListCode = useAtomValue(SelectPrefList);
-    const populationData = useAtomValue(PopulationList);
+    const populationList = useAtomValue(PopulationList);
+    const filteredData = populationList.filter((item) => item.checked);
 
-    if (!selectPrefListCode || selectPrefListCode.length === 0) {
+    if (filteredData.length === 0) {
         return <div className={styles.chartArea}>都道府県を選択してください</div>;
     }
-    if (populationData.length === 0) {
+
+    if (populationList.length === 0) {
         return <div className={styles.chartArea}>データ取得中...</div>;
     }
-
-    const filteredData = populationData.filter((item) =>
-        selectPrefListCode.includes(item.prefCode)
-    );
 
     const label: number[] = [
         ...new Set(filteredData.flatMap(({ data }) => data[0].data.map((d) => d.year))),
@@ -34,9 +31,5 @@ export default function PopulationContent({ selectedData }: Props) {
         borderWidth: 1,
     }));
 
-    return (
-        <>
-            <ChartTemplate label={label} datasets={datasets}/>
-        </>
-    );
+    return <ChartTemplate label={label} datasets={datasets} />;
 }
