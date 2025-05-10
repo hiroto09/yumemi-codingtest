@@ -1,9 +1,9 @@
-.main{
+.main {
     display: flex;
-    margin-top:3rem;
+    margin-top: 3rem;
     margin-bottom: 3rem;
-    
-    @media screen and (max-width: 1200px){
+
+    @media screen and (max-width: 1200px) {
         flex-direction: column;
     }
 }
