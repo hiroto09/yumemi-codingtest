@@ -2,7 +2,7 @@
 import Chart from './Chart';
 import { useState } from 'react';
 
-export default function ChartContent() {
+export default function PopulationContent() {
     const [selectedData, setSelectedData] = useState(0);
 
     return (
