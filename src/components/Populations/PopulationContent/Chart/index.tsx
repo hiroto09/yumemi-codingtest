@@ -15,10 +15,6 @@ export default function PopulationContent({ selectedData }: Props) {
         return <div className={styles.chartArea}>都道府県を選択してください</div>;
     }
 
-    if (populationList.length === 0) {
-        return <div className={styles.chartArea}>データ取得中...</div>;
-    }
-
     const label: number[] = [
         ...new Set(filteredData.flatMap(({ data }) => data[0].data.map((d) => d.year))),
     ];

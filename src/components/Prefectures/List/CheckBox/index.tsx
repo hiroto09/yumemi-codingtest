@@ -13,7 +13,9 @@ export default function CheckBox({ prefCode, prefName }: CheckBoxProps) {
     const setPopulationList = useSetAtom(PopulationList);
 
     const handleChangeCheckBox = async (checked: boolean) => {
+
         if (checked) {
+            
             const existing = populationList.find((data) => data.prefCode === prefCode);
 
             if (existing) {
