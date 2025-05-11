@@ -28,7 +28,11 @@ npm run dev
 ### テストの実行
 
 ```bash
-npm test
+npm run test
+```
+### カバレッジテストの実行
+```bash
+npm run coverage
 ```
 
 ## ディレクトリ構成
@@ -48,6 +52,8 @@ npm test
 ├── store
 │
 ├── test
+│
+├── types
 ```
 
 ### app
@@ -56,10 +62,9 @@ npm test
 
 ### api
 
-apiの管理を行う
+apiの管理を行う(データフェッチなどを行う)
 
 ### components
-
 コンポーネントを管理する
 
 ### const
