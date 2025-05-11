@@ -10,7 +10,7 @@ import { Line } from 'react-chartjs-2';
 
 describe('ChartTemplate', () => {
     test('Lineチャートが正しく描画される', () => {
-        const label = [2000, 2005, 2010];
+        const labels = [2000, 2005, 2010];
         const datasets = [
             {
                 label: 'Test Data',
@@ -29,11 +29,11 @@ describe('ChartTemplate', () => {
             },
         };
         const data = {
-            label: label,
+            labels: labels,
             datasets: datasets,
         };
 
-        render(<ChartTemplate label={label} datasets={datasets} />);
+        render(<ChartTemplate labels={labels} datasets={datasets} />);
 
         expect(screen.getByTestId('line-chart')).toBeInTheDocument();
 
