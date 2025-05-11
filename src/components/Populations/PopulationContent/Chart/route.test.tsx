@@ -1,4 +1,3 @@
-/// <reference types="vitest/globals" />
 import { describe, test, expect, vi, beforeEach, Mock } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import PopulationContent from '.';
