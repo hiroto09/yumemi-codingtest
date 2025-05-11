@@ -2,10 +2,10 @@ import { describe, expect, test } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import PopulationContent from '.';
 
-describe('PopulationContent コンポーネントのテスト', () => {
+describe('PopulationContent', () => {
     test('初期レンダリング時にセレクトボックスとオプションが表示される', () => {
         render(<PopulationContent />);
-        
+
         const select = screen.getByRole('combobox');
         expect(select).toBeInTheDocument();
 

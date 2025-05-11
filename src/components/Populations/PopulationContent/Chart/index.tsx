@@ -9,17 +9,17 @@ type Props = {
 
 export default function PopulationContent({ selectedData }: Props) {
     const populationList = useAtomValue(PopulationList);
-    const filteredData = populationList.filter((item) => item.checked);
+    const checkedData = populationList.filter((item) => item.checked);
 
-    if (filteredData.length === 0) {
+    if (checkedData.length === 0) {
         return <div className={styles.chartArea}>都道府県を選択してください</div>;
     }
 
     const label: number[] = [
-        ...new Set(filteredData.flatMap(({ data }) => data[0].data.map((d) => d.year))),
+        ...new Set(checkedData.flatMap(({ data }) => data[0].data.map((d) => d.year))),
     ];
 
-    const datasets = filteredData.map((item) => ({
+    const datasets = checkedData.map((item) => ({
         label: item.prefName,
         data: item.data[selectedData].data.map((d) => d.value),
         backgroundColor: item.color,

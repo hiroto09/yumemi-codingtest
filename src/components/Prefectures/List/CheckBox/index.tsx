@@ -13,15 +13,13 @@ export default function CheckBox({ prefCode, prefName }: CheckBoxProps) {
     const setPopulationList = useSetAtom(PopulationList);
 
     const handleChangeCheckBox = async (checked: boolean) => {
-
         if (checked) {
-            
             const existing = populationList.find((data) => data.prefCode === prefCode);
 
             if (existing) {
                 setPopulationList((prev) =>
                     prev.map((data) =>
-                        data.prefCode === prefCode ? { ...data, isChecked: true } : data
+                        data.prefCode === prefCode ? { ...data, checked: true } : data
                     )
                 );
             } else {
@@ -41,7 +39,7 @@ export default function CheckBox({ prefCode, prefName }: CheckBoxProps) {
         } else {
             setPopulationList((prev) =>
                 prev.map((data) =>
-                    data.prefCode === prefCode ? { ...data, isChecked: false } : data
+                    data.prefCode === prefCode ? { ...data, checked: false } : data
                 )
             );
         }
