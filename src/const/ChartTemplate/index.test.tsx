@@ -19,6 +19,19 @@ describe('ChartTemplate', () => {
                 backgroundColor: 'red',
             },
         ];
+        const options = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+            },
+        };
+        const data = {
+            label: label,
+            datasets: datasets,
+        };
 
         render(<ChartTemplate label={label} datasets={datasets} />);
 
@@ -26,19 +39,8 @@ describe('ChartTemplate', () => {
 
         expect(Line).toHaveBeenCalledWith(
             {
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                        },
-                    },
-                },
-                data: {
-                    label,
-                    datasets,
-                },
+                data,
+                options,
             },
             undefined
         );
