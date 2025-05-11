@@ -12,7 +12,6 @@ type DataSets = {
     data: number[];
     backgroundColor: string;
     borderColor: string;
-    borderWidth: number;
 };
 
 export default function PopulationContent({ selectedData }: Props) {
@@ -32,7 +31,6 @@ export default function PopulationContent({ selectedData }: Props) {
         data: item.data[selectedData].data.map((d) => d.value),
         backgroundColor: item.color,
         borderColor: item.color,
-        borderWidth: 1,
     }));
 
     return <ChartTemplate label={label} datasets={datasets} />;
