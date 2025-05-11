@@ -10,8 +10,8 @@ const mockResponse: PopulationResponse = {
             {
                 label: '総人口',
                 data: [
-                    { year: 1980, value: 100000 , rate: 10 },
-                    { year: 2020, value: 120000 , rate: 12 },
+                    { year: 1980, value: 100000, rate: 10 },
+                    { year: 2020, value: 120000, rate: 12 },
                 ],
             },
         ],

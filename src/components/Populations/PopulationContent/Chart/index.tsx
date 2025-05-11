@@ -27,7 +27,7 @@ export default function PopulationContent({ selectedData }: Props) {
         ...new Set(checkedData.flatMap(({ data }) => data[0].data.map((d) => d.year))),
     ];
 
-    const datasets:DataSets[] = checkedData.map((item) => ({
+    const datasets: DataSets[] = checkedData.map((item) => ({
         label: item.prefName,
         data: item.data[selectedData].data.map((d) => d.value),
         backgroundColor: item.color,
