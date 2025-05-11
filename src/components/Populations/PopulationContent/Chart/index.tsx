@@ -33,8 +33,5 @@ export default function PopulationContent({ selectedData }: Props) {
         borderColor: item.color,
     }));
 
-    console.log('datasets', datasets);
-    console.log('label', label);
-
     return <ChartTemplate labels={label} datasets={datasets} />;
 }
