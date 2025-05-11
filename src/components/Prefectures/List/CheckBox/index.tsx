@@ -1,6 +1,6 @@
 'use client';
 import { useSetAtom, useAtomValue } from 'jotai';
-import { selectPrefList, PopulationList } from '@/store';
+import { PopulationList } from '@/store';
 import getPopulations from '@/api/populations/route';
 
 type CheckBoxProps = {
@@ -9,28 +9,39 @@ type CheckBoxProps = {
 };
 
 export default function CheckBox({ prefCode, prefName }: CheckBoxProps) {
-    const setSelectPrefList = useSetAtom(selectPrefList);
     const populationList = useAtomValue(PopulationList);
     const setPopulationList = useSetAtom(PopulationList);
 
     const handleChangeCheckBox = async (checked: boolean) => {
-        setSelectPrefList((prev) => {
-            const list = prev ?? [];
-            return checked ? [...list, prefCode] : list.filter((code) => code !== prefCode);
-        });
+        if (checked) {
+            const existing = populationList.find((data) => data.prefCode === prefCode);
 
-        if (checked && !populationList.some((data) => data.prefCode === prefCode)) {
-            const color = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-            const populationData = await getPopulations(prefCode);
-            setPopulationList((prev) => [
-                ...prev,
-                {
-                    prefCode,
-                    prefName,
-                    color,
-                    data: populationData,
-                },
-            ]);
+            if (existing) {
+                setPopulationList((prev) =>
+                    prev.map((data) =>
+                        data.prefCode === prefCode ? { ...data, checked: true } : data
+                    )
+                );
+            } else {
+                const color = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+                const populationData = await getPopulations(prefCode);
+                setPopulationList((prev) => [
+                    ...prev,
+                    {
+                        prefCode,
+                        prefName,
+                        color,
+                        data: populationData,
+                        checked: true,
+                    },
+                ]);
+            }
+        } else {
+            setPopulationList((prev) =>
+                prev.map((data) =>
+                    data.prefCode === prefCode ? { ...data, checked: false } : data
+                )
+            );
         }
     };
 
