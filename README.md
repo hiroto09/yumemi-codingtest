@@ -71,7 +71,8 @@ npm run coverage
 │   │   │   │   └── route.test.tsx
 │   │   │   ├── index.tsx
 │   │   │   └── route.test.tsx
-│   │   └── index.tsx
+│   │   ├── index.tsx
+│   │   └── route.test.tsx
 │   ├── Prefectures
 │   │   ├── List
 │   │   │   ├── CheckBox
@@ -80,7 +81,8 @@ npm run coverage
 │   │   │   ├── index.module.scss
 │   │   │   ├── index.tsx
 │   │   │   └── route.test.tsx
-│   │   └── index.tsx
+│   │   ├── index.tsx
+│   │   └── route.test.tsx
 │   └── layout
 │       └── Section
 │           ├── index.module.scss
@@ -107,13 +109,13 @@ npm run coverage
 - `layout/Section`
     - セクションごとのレイアウトを管理
 - `Populations`
-    - 人口グラフセクションを管理
+    - Populationsセクションを管理
 - `Prefectures`
-    - 都道府県リストセクションを管理
+    - Prefecturesセクションを管理
 
 ### store
-
-atom を管理
+- atom を管理
+    - `PopulationList`グラフの描画に必要な情報と状態を管理
 
 ### test
 
