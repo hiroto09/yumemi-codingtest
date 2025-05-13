@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: 'ゆめみコーディングテスト',
-    description: 'ゆめみコーディングテスト',
+    title: '都道府県別人口推移比較サイト',
+    description: '都道府県別人口推移比較サイト',
 };
 
 export default function RootLayout({
