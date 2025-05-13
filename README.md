@@ -35,16 +35,16 @@ npm run lint:fix
 ### prettier
 
 ```bash
-npm run prettier
+npm run format:fix
 ```
 
-### テストの実行
+### ユニットテスト
 
 ```bash
 npm run test
 ```
 
-### カバレッジテストの実行
+### カバレッジテスト
 
 ```bash
 npm run coverage
@@ -76,22 +76,22 @@ npm run test:e2e
 ├── components
 │   ├── Header
 │   │   ├── index.module.scss
-│   │   ├── index.tsx
-│   │   └── route.test.tsx
+│   │   ├── index.test.tsx
+│   │   └── index.tsx
 │   ├── Populations
 │   │   ├── PopulationContent
 │   │   │   ├── Chart
 │   │   │   │   ├── ChartTemplate
 │   │   │   │   │   ├── index.module.scss
-│   │   │   │   │   ├── index.tsx
-│   │   │   │   │   └── route.test.tsx
+│   │   │   │   │   ├── index.test.tsx
+│   │   │   │   │   └── index.tsx
 │   │   │   │   ├── index.module.scss
-│   │   │   │   ├── index.tsx
-│   │   │   │   └── route.test.tsx
-│   │   │   ├── index.tsx
-│   │   │   └── route.test.tsx
-│   │   ├── index.tsx
-│   │   └── route.test.tsx
+│   │   │   │   ├── index.test.tsx
+│   │   │   │   └── index.tsx
+│   │   │   ├── index.test.tsx
+│   │   │   └── index.tsx
+│   │   ├── index.test.tsx
+│   │   └── index.tsx
 │   ├── Prefectures
 │   │   ├── List
 │   │   │   ├── CheckBox
@@ -100,13 +100,13 @@ npm run test:e2e
 │   │   │   ├── index.module.scss
 │   │   │   ├── index.tsx
 │   │   │   └── route.test.tsx
-│   │   ├── index.tsx
-│   │   └── route.test.tsx
+│   │   ├── index.test.tsx
+│   │   └── index.tsx
 │   └── layout
 │       └── Section
 │           ├── index.module.scss
-│           ├── index.tsx
-│           └── route.test.tsx
+│           ├── index.test.tsx
+│           └── index.tsx
 ├── store
 │   └── index.ts
 ├── test
@@ -119,12 +119,14 @@ npm run test:e2e
 ### app
 
 ルーティングを管理
+
 - `api`
     - apiの管理
 
 ### components
+
 - `Header`
-    - Header要素の管理
+    - Headerコンポーネントの管理
 - `layout/Section`
     - セクションごとのレイアウトを管理
 - `Populations`
@@ -133,6 +135,7 @@ npm run test:e2e
     - Prefecturesセクションを管理
 
 ### store
+
 - atom を管理
     - `PopulationList`グラフの描画に必要な情報と状態を管理
 
@@ -142,4 +145,5 @@ npm run test:e2e
     - テストのセットアップを行う
 
 ### types
+
 - 複数のファイルを跨ぐ型を管理

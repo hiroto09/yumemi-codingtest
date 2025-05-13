@@ -6,7 +6,7 @@
         "dev": "next dev --turbopack",
         "build": "next build",
         "start": "next start",
-        "prettier": "prettier --config .prettierrc --write .",
+        "format:fix": "prettier --config .prettierrc --write .",
         "lint": "next lint",
         "lint:fix": "next lint --fix",
         "test": "vitest",
