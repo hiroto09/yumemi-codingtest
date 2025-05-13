@@ -5,9 +5,9 @@ import Section from '.';
 
 describe('初期レンダリング時のテスト', () => {
     test('Section', () => {
-        render(<Section title="都道府県" />);
-        expect(screen.getByText('都道府県')).toBeInTheDocument();
-        render(<Section title="都道府県別人口" />);
-        expect(screen.getByText('都道府県別人口')).toBeInTheDocument();
+        render(<Section title="都道府県リスト" />);
+        expect(screen.getByText('都道府県リスト')).toBeInTheDocument();
+        render(<Section title="人口グラフ" />);
+        expect(screen.getByText('人口グラフ')).toBeInTheDocument();
     });
 });

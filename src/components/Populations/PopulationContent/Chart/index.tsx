@@ -1,4 +1,4 @@
-import ChartTemplate from '@/const/ChartTemplate';
+import ChartTemplate from './ChartTemplate';
 import { PopulationList } from '@/store';
 import { useAtomValue } from 'jotai';
 import styles from './index.module.scss';

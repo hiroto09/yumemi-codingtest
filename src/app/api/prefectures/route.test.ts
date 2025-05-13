@@ -1,6 +1,6 @@
 /// <reference types="vitest/globals" />
 import { describe, expect, vi, beforeEach } from 'vitest';
-import getPrefectures from './route';
+import GET from './route';
 import type { PrefectureResponse } from '@/types/prefectures';
 
 const mockResponse: PrefectureResponse = {
@@ -11,7 +11,7 @@ const mockResponse: PrefectureResponse = {
     ],
 };
 
-describe('getPrefectures', () => {
+describe('prefectures_GET', () => {
     beforeEach(() => {
         vi.resetAllMocks();
         process.env.NEXT_PUBLIC_X_API_KEY = 'dummy-api-key';
@@ -24,7 +24,7 @@ describe('getPrefectures', () => {
             json: () => Promise.resolve(mockResponse),
         });
 
-        const data = await getPrefectures();
+        const data = await GET();
 
         expect(data).toEqual(mockResponse.result);
         expect(fetch).toHaveBeenCalledWith('https://example.com/api/v1/prefectures', {
@@ -40,18 +40,18 @@ describe('getPrefectures', () => {
             statusText: 'Internal Server Error',
         });
 
-        await expect(getPrefectures()).rejects.toThrow('HTTPエラー: 500 Internal Server Error');
+        await expect(GET()).rejects.toThrow('HTTPエラー: 500 Internal Server Error');
     });
 
     test('X_API_KEY が未設定の場合にエラーを投げる', async () => {
         delete process.env.NEXT_PUBLIC_X_API_KEY;
 
-        await expect(getPrefectures()).rejects.toThrow('環境変数 X_API_KEY が設定されていません');
+        await expect(GET()).rejects.toThrow('環境変数 X_API_KEY が設定されていません');
     });
 
     test('API_URL が未設定の場合にエラーを投げる', async () => {
         delete process.env.NEXT_PUBLIC_API_URL;
 
-        await expect(getPrefectures()).rejects.toThrow('環境変数 API_URL が設定されていません');
+        await expect(GET()).rejects.toThrow('環境変数 API_URL が設定されていません');
     });
 });

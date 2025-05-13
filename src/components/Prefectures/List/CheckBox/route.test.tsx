@@ -2,7 +2,7 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { describe, vi, expect, beforeEach } from 'vitest';
 import { Provider } from 'jotai';
 import CheckBox from '.';
-import * as api from '@/api/populations/route';
+import * as api from '@/app/api/populations/route';
 import { PopulationList } from '@/store';
 import { createStore } from 'jotai';
 

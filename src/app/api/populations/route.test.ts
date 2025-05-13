@@ -1,5 +1,5 @@
 import { describe, expect, vi, beforeEach } from 'vitest';
-import getPopulations from './route';
+import GET from './route';
 import type { PopulationResponse } from '@/types/populations';
 
 const mockResponse: PopulationResponse = {
@@ -18,7 +18,7 @@ const mockResponse: PopulationResponse = {
     },
 };
 
-describe('getPopulations', () => {
+describe('populations_GET', () => {
     beforeEach(() => {
         vi.resetAllMocks();
         process.env.NEXT_PUBLIC_X_API_KEY = 'dummy-api-key';
@@ -31,7 +31,7 @@ describe('getPopulations', () => {
             json: () => Promise.resolve(mockResponse),
         });
 
-        const data = await getPopulations(1);
+        const data = await GET(1);
 
         expect(data).toEqual(mockResponse.result.data);
         expect(fetch).toHaveBeenCalledWith(
@@ -50,11 +50,11 @@ describe('getPopulations', () => {
             statusText: 'Not Found',
         });
 
-        await expect(getPopulations(1)).rejects.toThrow('HTTPエラー: 404 Not Found');
+        await expect(GET(1)).rejects.toThrow('HTTPエラー: 404 Not Found');
     });
 
     test('環境変数が未設定の場合にエラーを投げる', async () => {
         delete process.env.NEXT_PUBLIC_X_API_KEY;
-        await expect(getPopulations(1)).rejects.toThrow('環境変数 X_API_KEY が設定されていません');
+        await expect(GET(1)).rejects.toThrow('環境変数 X_API_KEY が設定されていません');
     });
 });

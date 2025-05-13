@@ -30,7 +30,9 @@ npm run dev
 ```bash
 npm run test
 ```
+
 ### カバレッジテストの実行
+
 ```bash
 npm run coverage
 ```
@@ -40,49 +42,83 @@ npm run coverage
 ```
 ./src
 ├── app
-│
+│   ├── api
+│   │   ├── populations
+│   │   │   ├── route.test.ts
+│   │   │   └── route.ts
+│   │   └── prefectures
+│   │       ├── route.test.ts
+│   │       └── route.ts
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── layout.tsx
+│   ├── page.module.scss
+│   └── page.tsx
 ├── components
-│   ├── layout
+│   ├── Header
+│   │   ├── index.module.scss
+│   │   ├── index.tsx
+│   │   └── route.test.tsx
 │   ├── Populations
+│   │   ├── PopulationContent
+│   │   │   ├── Chart
+│   │   │   │   ├── ChartTemplate
+│   │   │   │   │   ├── index.module.scss
+│   │   │   │   │   ├── index.tsx
+│   │   │   │   │   └── route.test.tsx
+│   │   │   │   ├── index.module.scss
+│   │   │   │   ├── index.tsx
+│   │   │   │   └── route.test.tsx
+│   │   │   ├── index.tsx
+│   │   │   └── route.test.tsx
+│   │   └── index.tsx
 │   ├── Prefectures
-│
-├── const
-│   ├── ChartTemplate
-│
+│   │   ├── List
+│   │   │   ├── CheckBox
+│   │   │   │   ├── index.tsx
+│   │   │   │   └── route.test.tsx
+│   │   │   ├── index.module.scss
+│   │   │   ├── index.tsx
+│   │   │   └── route.test.tsx
+│   │   └── index.tsx
+│   └── layout
+│       └── Section
+│           ├── index.module.scss
+│           ├── index.tsx
+│           └── route.test.tsx
 ├── store
-│
+│   └── index.ts
 ├── test
-│
-├── types
+│   └── vitest-setup.ts
+└── types
+    ├── populations.ts
+    └── prefectures.ts
 ```
 
 ### app
 
-ルーティングを管理する
-
-### api
-
-apiの管理を行う(データフェッチなどを行う)
+ルーティングを管理
+- `api`
+    - apiの管理
 
 ### components
-コンポーネントを管理する
+- `Header`
+    - Header要素の管理
+- `layout/Section`
+    - セクションごとのレイアウトを管理
+- `Populations`
+    - 人口グラフセクションを管理
+- `Prefectures`
+    - 都道府県リストセクションを管理
 
-### const
+### store
 
-- ChartTemplate
-- チャートの宣言を行う
-
-### stores
-
-jotai の atom を管理する
+atom を管理
 
 ### test
 
-テスト用のファイルを管理する
-
-- vitest-setup.ts
+- `vitest-setup.ts`
     - テストのセットアップを行う
 
 ### types
-
-複数のファイルを跨ぐ型を管理
+- 複数のファイルを跨ぐ型を管理

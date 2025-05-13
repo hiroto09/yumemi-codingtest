@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import ChartTemplate from './index';
+import ChartTemplate from '.';
 import { vi } from 'vitest';
 
 vi.mock('react-chartjs-2', () => ({

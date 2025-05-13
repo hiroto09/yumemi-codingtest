@@ -1,7 +1,7 @@
 'use client';
 import { useSetAtom, useAtomValue } from 'jotai';
 import { PopulationList } from '@/store';
-import getPopulations from '@/api/populations/route';
+import GET from '@/app/api/populations/route'; // APIから人口データを取得する関数
 
 type CheckBoxProps = {
     prefCode: number;
@@ -24,7 +24,7 @@ export default function CheckBox({ prefCode, prefName }: CheckBoxProps) {
                 );
             } else {
                 const color = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-                const populationData = await getPopulations(prefCode);
+                const populationData = await GET(prefCode);
                 setPopulationList((prev) => [
                     ...prev,
                     {
