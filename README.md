@@ -8,6 +8,7 @@
 - jotai
 - Vitest
 - TestingLibrary
+- playwright
 
 ## セットアップ
 
@@ -25,6 +26,18 @@ npm install
 npm run dev
 ```
 
+### esLint
+
+```bash
+npm run lint:fix
+```
+
+### prettier
+
+```bash
+npm run prettier
+```
+
 ### テストの実行
 
 ```bash
@@ -35,6 +48,12 @@ npm run test
 
 ```bash
 npm run coverage
+```
+
+### e2eテスト
+
+```bash
+npm run test:e2e
 ```
 
 ## ディレクトリ構成
