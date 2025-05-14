@@ -1,4 +1,3 @@
-/// <reference types="vitest/globals" />
 import { describe, expect, vi, beforeEach } from 'vitest';
 import GET from './route';
 import type { PrefectureResponse } from '@/types/prefectures';
