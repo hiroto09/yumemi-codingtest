@@ -63,9 +63,11 @@ npm run test:e2e
 ├── app
 │   ├── api
 │   │   ├── populations
+│   │   │   ├── fetchPopulations.ts
 │   │   │   ├── route.test.ts
 │   │   │   └── route.ts
 │   │   └── prefectures
+│   │       ├── fetchPrefectures.ts
 │   │       ├── route.test.ts
 │   │       └── route.ts
 │   ├── favicon.ico
@@ -107,6 +109,9 @@ npm run test:e2e
 │           ├── index.module.scss
 │           ├── index.test.tsx
 │           └── index.tsx
+├── fetcher
+│   ├── populations
+│   └── prefectures
 ├── store
 │   └── index.ts
 ├── test
