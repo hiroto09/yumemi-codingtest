@@ -1,6 +1,6 @@
 import { PrefectureResponse, Prefectures } from '@/types/prefectures';
 
-export default async function GET() {
+export async function GET() {
     const X_API_KEY: string | undefined = process.env.NEXT_PUBLIC_X_API_KEY;
     const API_URL: string | undefined = process.env.NEXT_PUBLIC_API_URL;
 

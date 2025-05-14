@@ -20,7 +20,7 @@ describe('CheckBoxコンポーネントのテスト', () => {
     ];
 
     beforeEach(() => {
-        vi.spyOn(api, 'default').mockResolvedValue(fakePopulationData);
+        vi.spyOn(api, 'GET').mockResolvedValue(fakePopulationData);
     });
 
     test('チェックイベントのテスト', async () => {

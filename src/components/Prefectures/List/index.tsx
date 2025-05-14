@@ -1,4 +1,4 @@
-import GET from '@/app/api/prefectures/route'; // APIから都道府県データを取得する関数
+import { GET } from '@/app/api/prefectures/route'; // APIから都道府県データを取得する関数
 import styles from './index.module.scss';
 import CheckBox from './CheckBox';
 

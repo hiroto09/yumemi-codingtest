@@ -1,7 +1,7 @@
 'use client';
 import { useSetAtom, useAtomValue } from 'jotai';
 import { PopulationList } from '@/store';
-import GET from '@/app/api/populations/route'; // APIから人口データを取得する関数
+import { GET } from '@/app/api/populations/route'; // APIから人口データを取得する関数
 
 type CheckBoxProps = {
     prefCode: number;

@@ -1,5 +1,5 @@
 import { describe, expect, vi, beforeEach } from 'vitest';
-import GET from './route';
+import { GET } from './route';
 import type { PrefectureResponse } from '@/types/prefectures';
 
 const mockResponse: PrefectureResponse = {
