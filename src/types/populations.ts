@@ -2,11 +2,11 @@ type PopulationData = {
     year: number;
     value: number;
     rate: number;
-};
+}[];
 
-type ResultData = {
+export type ResultData = {
     label: string;
-    data: PopulationData[];
+    data: PopulationData;
 };
 
 export type PopulationResponse = {

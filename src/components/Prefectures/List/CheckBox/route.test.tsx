@@ -1,8 +1,7 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { describe, vi, expect, beforeEach } from 'vitest';
+import { describe, expect, vi, beforeEach, afterEach } from 'vitest';
 import { Provider } from 'jotai';
 import CheckBox from '.';
-import * as api from '@/app/api/populations/route';
 import { PopulationList } from '@/store';
 import { createStore } from 'jotai';
 
@@ -20,7 +19,14 @@ describe('CheckBoxコンポーネントのテスト', () => {
     ];
 
     beforeEach(() => {
-        vi.spyOn(api, 'GET').mockResolvedValue(fakePopulationData);
+        global.fetch = vi.fn(() => Promise.resolve({
+            json: () => Promise.resolve(fakePopulationData),
+        })
+        ) as unknown as typeof fetch;
+    });
+
+    afterEach(() => {
+        vi.restoreAllMocks();
     });
 
     test('チェックイベントのテスト', async () => {

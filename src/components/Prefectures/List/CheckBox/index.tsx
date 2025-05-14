@@ -1,7 +1,7 @@
 'use client';
 import { useSetAtom, useAtomValue } from 'jotai';
 import { PopulationList } from '@/store';
-import { GET } from '@/app/api/populations/route'; // APIから人口データを取得する関数
+import { ResultData } from '@/types/populations';
 
 type CheckBoxProps = {
     prefCode: number;
@@ -11,6 +11,12 @@ type CheckBoxProps = {
 export default function CheckBox({ prefCode, prefName }: CheckBoxProps) {
     const populationList = useAtomValue(PopulationList);
     const setPopulationList = useSetAtom(PopulationList);
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+    if (!API_URL) throw new Error('環境変数 API_URL が設定されていません');
+
+    const url = new URL('/api/populations', API_URL);
+    url.searchParams.append('prefCode', prefCode.toString());
 
     const handleChangeCheckBox = async (checked: boolean) => {
         if (checked) {
@@ -24,7 +30,9 @@ export default function CheckBox({ prefCode, prefName }: CheckBoxProps) {
                 );
             } else {
                 const color = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-                const populationData = await GET(prefCode);
+                const response = await fetch(url.toString());
+                const populationData: ResultData[] = await response.json();
+
                 setPopulationList((prev) => [
                     ...prev,
                     {

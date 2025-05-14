@@ -1,25 +1,11 @@
-import { PrefectureResponse, Prefectures } from '@/types/prefectures';
+import { NextResponse } from 'next/server';
+import { fetchPrefectures } from './fetchPrefectures';
 
 export async function GET() {
-    const X_API_KEY: string | undefined = process.env.NEXT_PUBLIC_X_API_KEY;
-    const API_URL: string | undefined = process.env.NEXT_PUBLIC_API_URL;
-
-    if (!X_API_KEY) throw new Error('環境変数 X_API_KEY が設定されていません');
-    if (!API_URL) throw new Error('環境変数 API_URL が設定されていません');
-
-    const url = new URL('/api/v1/prefectures', API_URL);
-
-    const response = await fetch(url.toString(), {
-        cache: 'no-store',
-        headers: { 'X-API-KEY': X_API_KEY },
-    });
-
-    if (!response.ok) {
-        throw new Error(`HTTPエラー: ${response.status} ${response.statusText}`);
+    try {
+        const data = await fetchPrefectures();
+        return NextResponse.json(data);
+    } catch (error) {
+        return NextResponse.json({ error: (error as Error).message }, { status: 500 });
     }
-
-    const responseJson: PrefectureResponse = await response.json();
-    const prefectures: Prefectures = responseJson.result;
-
-    return prefectures;
 }
