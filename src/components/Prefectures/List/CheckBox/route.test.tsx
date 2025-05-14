@@ -19,9 +19,10 @@ describe('CheckBoxコンポーネントのテスト', () => {
     ];
 
     beforeEach(() => {
-        global.fetch = vi.fn(() => Promise.resolve({
-            json: () => Promise.resolve(fakePopulationData),
-        })
+        global.fetch = vi.fn(() =>
+            Promise.resolve({
+                json: () => Promise.resolve(fakePopulationData),
+            })
         ) as unknown as typeof fetch;
     });
 

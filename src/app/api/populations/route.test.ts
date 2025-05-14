@@ -63,16 +63,12 @@ describe('populations_GET', () => {
     test('APIキー未設定時にエラーを投げる', async () => {
         delete process.env.X_API_KEY;
 
-        await expect(fetchPopulationData(1)).rejects.toThrow(
-            'X_API_KEY が未設定'
-        );
+        await expect(fetchPopulationData(1)).rejects.toThrow('X_API_KEY が未設定');
     });
 
     test('API URL未設定時にエラーを投げる', async () => {
         delete process.env.API_URL;
 
-        await expect(fetchPopulationData(1)).rejects.toThrow(
-            'API_URL が未設定'
-        );
+        await expect(fetchPopulationData(1)).rejects.toThrow('API_URL が未設定');
     });
 });
