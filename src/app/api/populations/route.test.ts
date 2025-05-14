@@ -1,5 +1,5 @@
-import { describe, expect, vi, beforeEach } from 'vitest';
-import { GET } from './route';
+import { describe, expect, vi, beforeEach, afterEach } from 'vitest';
+import { fetchPopulationData } from './fetchPopulations';
 import type { PopulationResponse } from '@/types/populations';
 
 const mockResponse: PopulationResponse = {
@@ -18,20 +18,27 @@ const mockResponse: PopulationResponse = {
     },
 };
 
+const originalEnv = process.env;
+
 describe('populations_GET', () => {
     beforeEach(() => {
         vi.resetAllMocks();
-        process.env.NEXT_PUBLIC_X_API_KEY = 'dummy-api-key';
-        process.env.NEXT_PUBLIC_API_URL = 'https://example.com';
+        process.env = { ...originalEnv };
+        process.env.X_API_KEY = 'dummy-api-key';
+        process.env.API_URL = 'https://example.com';
+    });
+
+    afterEach(() => {
+        process.env = originalEnv;
     });
 
     test('正常に人口データを返す', async () => {
         global.fetch = vi.fn().mockResolvedValue({
             ok: true,
             json: () => Promise.resolve(mockResponse),
-        });
+        } as Response);
 
-        const data = await GET(1);
+        const data = await fetchPopulationData(1);
 
         expect(data).toEqual(mockResponse.result.data);
         expect(fetch).toHaveBeenCalledWith(
@@ -48,13 +55,20 @@ describe('populations_GET', () => {
             ok: false,
             status: 404,
             statusText: 'Not Found',
-        });
+        } as Response);
 
-        await expect(GET(1)).rejects.toThrow('HTTPエラー: 404 Not Found');
+        await expect(fetchPopulationData(1)).rejects.toThrow('HTTPエラー: 404');
     });
 
-    test('環境変数が未設定の場合にエラーを投げる', async () => {
-        delete process.env.NEXT_PUBLIC_X_API_KEY;
-        await expect(GET(1)).rejects.toThrow('環境変数 X_API_KEY が設定されていません');
+    test('APIキー未設定時にエラーを投げる', async () => {
+        delete process.env.X_API_KEY;
+
+        await expect(fetchPopulationData(1)).rejects.toThrow('X_API_KEY が未設定');
+    });
+
+    test('API URL未設定時にエラーを投げる', async () => {
+        delete process.env.API_URL;
+
+        await expect(fetchPopulationData(1)).rejects.toThrow('API_URL が未設定');
     });
 });

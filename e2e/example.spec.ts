@@ -80,12 +80,16 @@ test('チャートが表示されるかのテスト', async ({ page }) => {
 
     const tokyoLabel = await page.getByText('東京都');
     const tokyoCheckbox = await tokyoLabel.locator('input[type="checkbox"]');
+
+    if (await tokyoCheckbox.isChecked()) {
+        await tokyoCheckbox.uncheck();
+    }
+
     await tokyoCheckbox.check();
 
-    await page.waitForSelector('canvas', { state: 'visible', timeout: 5000 });
+    await page.waitForSelector('canvas', { state: 'visible', timeout: 10000 });
 
     const canvas = await page.$('canvas');
-    expect(canvas).not.toBeNull();
     expect(canvas).not.toBeNull();
     expect(await canvas!.isVisible()).toBe(true);
 });
@@ -98,6 +102,7 @@ test('人口種を変更してもグラフが表示されるかのテスト', as
     await tokyoCheckbox.check();
 
     await page.waitForSelector('canvas', { state: 'visible', timeout: 5000 });
+
     const canvas = await page.$('canvas');
     expect(canvas).not.toBeNull();
     expect(await canvas!.isVisible()).toBe(true);

@@ -10,7 +10,7 @@
         "lint": "next lint",
         "lint:fix": "next lint --fix",
         "test": "vitest",
-        "test:e2e": "playwright test",
+        "test:e2e": "playwright test --headed",
         "coverage": "vitest run --coverage"
     },
     "dependencies": {
