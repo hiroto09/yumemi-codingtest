@@ -3,7 +3,7 @@ import PopulationContent from './PopulationContent';
 
 export default function Populations() {
     return (
-        <Section title="都道府県別人口">
+        <Section title="人口グラフ">
             <PopulationContent />
         </Section>
     );

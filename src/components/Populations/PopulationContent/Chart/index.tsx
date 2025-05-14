@@ -1,4 +1,4 @@
-import ChartTemplate from '@/const/ChartTemplate';
+import ChartTemplate from './ChartTemplate';
 import { PopulationList } from '@/store';
 import { useAtomValue } from 'jotai';
 import styles from './index.module.scss';
@@ -12,7 +12,6 @@ type DataSets = {
     data: number[];
     backgroundColor: string;
     borderColor: string;
-    borderWidth: number;
 };
 
 export default function PopulationContent({ selectedData }: Props) {
@@ -27,13 +26,12 @@ export default function PopulationContent({ selectedData }: Props) {
         ...new Set(checkedData.flatMap(({ data }) => data[0].data.map((d) => d.year))),
     ];
 
-    const datasets:DataSets[] = checkedData.map((item) => ({
+    const datasets: DataSets[] = checkedData.map((item) => ({
         label: item.prefName,
         data: item.data[selectedData].data.map((d) => d.value),
         backgroundColor: item.color,
         borderColor: item.color,
-        borderWidth: 1,
     }));
 
-    return <ChartTemplate label={label} datasets={datasets} />;
+    return <ChartTemplate labels={label} datasets={datasets} />;
 }

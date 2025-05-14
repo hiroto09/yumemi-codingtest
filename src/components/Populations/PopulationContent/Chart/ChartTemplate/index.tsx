@@ -14,7 +14,7 @@ import styles from './index.module.scss';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend);
 
 type ChartTemplateProps = {
-    label: number[];
+    labels: number[];
     datasets: {
         label: string;
         data: number[];
@@ -23,7 +23,7 @@ type ChartTemplateProps = {
     }[];
 };
 
-export default function ChartTemplate({ label, datasets }: ChartTemplateProps) {
+export default function ChartTemplate({ labels, datasets }: ChartTemplateProps) {
     const options = {
         responsive: true,
         maintainAspectRatio: false,
@@ -35,9 +35,10 @@ export default function ChartTemplate({ label, datasets }: ChartTemplateProps) {
     };
 
     const data = {
-        label,
+        labels,
         datasets,
     };
+
     return (
         <div className={styles.chart}>
             <Line options={options} data={data} />

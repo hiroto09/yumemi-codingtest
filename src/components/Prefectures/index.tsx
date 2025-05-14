@@ -3,7 +3,7 @@ import PrefList from './List';
 
 export default function Prefecture() {
     return (
-        <Section title="都道府県">
+        <Section title="都道府県リスト">
             <PrefList />
         </Section>
     );

@@ -8,6 +8,7 @@
 - jotai
 - Vitest
 - TestingLibrary
+- playwright
 
 ## セットアップ
 
@@ -25,10 +26,34 @@ npm install
 npm run dev
 ```
 
-### テストの実行
+### esLint
 
 ```bash
-npm test
+npm run lint:fix
+```
+
+### prettier
+
+```bash
+npm run format:fix
+```
+
+### ユニットテスト
+
+```bash
+npm run test
+```
+
+### カバレッジテスト
+
+```bash
+npm run coverage
+```
+
+### e2eテスト
+
+```bash
+npm run test:e2e
 ```
 
 ## ディレクトリ構成
@@ -36,48 +61,89 @@ npm test
 ```
 ./src
 ├── app
-│
+│   ├── api
+│   │   ├── populations
+│   │   │   ├── route.test.ts
+│   │   │   └── route.ts
+│   │   └── prefectures
+│   │       ├── route.test.ts
+│   │       └── route.ts
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── layout.tsx
+│   ├── page.module.scss
+│   └── page.tsx
 ├── components
-│   ├── layout
+│   ├── Header
+│   │   ├── index.module.scss
+│   │   ├── index.test.tsx
+│   │   └── index.tsx
 │   ├── Populations
+│   │   ├── PopulationContent
+│   │   │   ├── Chart
+│   │   │   │   ├── ChartTemplate
+│   │   │   │   │   ├── index.module.scss
+│   │   │   │   │   ├── index.test.tsx
+│   │   │   │   │   └── index.tsx
+│   │   │   │   ├── index.module.scss
+│   │   │   │   ├── index.test.tsx
+│   │   │   │   └── index.tsx
+│   │   │   ├── index.test.tsx
+│   │   │   └── index.tsx
+│   │   ├── index.test.tsx
+│   │   └── index.tsx
 │   ├── Prefectures
-│
-├── const
-│   ├── ChartTemplate
-│
+│   │   ├── List
+│   │   │   ├── CheckBox
+│   │   │   │   ├── index.tsx
+│   │   │   │   └── route.test.tsx
+│   │   │   ├── index.module.scss
+│   │   │   ├── index.tsx
+│   │   │   └── route.test.tsx
+│   │   ├── index.test.tsx
+│   │   └── index.tsx
+│   └── layout
+│       └── Section
+│           ├── index.module.scss
+│           ├── index.test.tsx
+│           └── index.tsx
 ├── store
-│
+│   └── index.ts
 ├── test
+│   └── vitest-setup.ts
+└── types
+    ├── populations.ts
+    └── prefectures.ts
 ```
 
 ### app
 
-ルーティングを管理する
+ルーティングを管理
 
-### api
-
-apiの管理を行う
+- `api`
+    - apiの管理
 
 ### components
 
-コンポーネントを管理する
+- `Header`
+    - Headerコンポーネントの管理
+- `layout/Section`
+    - セクションごとのレイアウトを管理
+- `Populations`
+    - Populationsセクションを管理
+- `Prefectures`
+    - Prefecturesセクションを管理
 
-### const
+### store
 
-- ChartTemplate
-- チャートの宣言を行う
-
-### stores
-
-jotai の atom を管理する
+- atom を管理
+    - `PopulationList`グラフの描画に必要な情報と状態を管理
 
 ### test
 
-テスト用のファイルを管理する
-
-- vitest-setup.ts
+- `vitest-setup.ts`
     - テストのセットアップを行う
 
 ### types
 
-複数のファイルを跨ぐ型を管理
+- 複数のファイルを跨ぐ型を管理

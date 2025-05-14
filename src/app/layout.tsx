@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import Header from '@/components/layout/Header';
+import Header from '@/components/Header';
 import './globals.css';
 
 const geistSans = Geist({
@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: 'ゆめみコーディングテスト',
-    description: 'ゆめみコーディングテスト',
+    title: '都道府県別人口推移比較サイト',
+    description: '都道府県別人口推移比較サイト',
 };
 
 export default function RootLayout({
